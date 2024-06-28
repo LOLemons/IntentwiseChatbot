@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="'UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Welcome to Intentwise Chatbot!</h1>
+        <h3>Ask questions about AI, AI ecosystems, and their implications</h3>
+        <br>
+        <form action="{{url_for('question_replace')}}" method="POST">
+            <label for="user_question">Ask your question here</label>
+            <input type="text" name="user_question">
+            <input type="submit" value="Enter">
+        </form>
+    <p>Response:</p>
+        <head>
+            {{model_response}}
+        </head>
+    </body>
+</html>
