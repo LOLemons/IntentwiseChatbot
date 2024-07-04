@@ -13,7 +13,7 @@ with fitz.open("sample.pdf", filetype='pdf') as doc: #change the name of the pdf
         text += page.get_text()
 
 #model, tokenizer setup
-quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+quantization_config = BitsAndBytesConfig(load_in_4bit=True)#change from 4bit to 8bit if necessary
 model_dir = "C://Users//shrim//Llama-2-7b-hf" #change the directory to the model later
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 model = AutoModelForCausalLM.from_pretrained(
