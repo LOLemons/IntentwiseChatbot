@@ -1,8 +1,0 @@
-flask
-torch
-fairscale
-fire
-sentencepiece
-transformers
-PyMuPDF
-protobuf
