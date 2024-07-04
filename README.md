@@ -5,6 +5,8 @@ To get started, clone the repository and install all the dependencies in setup.t
 Open the `backend.py` file, change the path of the LlaMa 2 model (which you will have to have gain access to and downloaded from HuggingFace).
 Then run the `backend.py` file. It will run a flask app locally on your computer.
 
+A fairly capable Nvidia GPU is needed to run the webpage locally (at least 8gb vram recommended) to make use of the quantization.
+
 Keep in mind that the LLM too is running locally and extensive resources will be used to run the web page.
 
 Report issues on the issues page
