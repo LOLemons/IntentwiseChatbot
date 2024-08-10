@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intentwise Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+<div>
+  <div class="banner">
+    <h1>Welcome to Intentwise Chatbot!</h1>
+    <h3>Ask questions about AI, AI ecosystems, and their implications</h3>
+</div>
+        <div class="boxed">
+            <div>
+                <div id="chatbox">
+                    <p class="botText">
+                        <span>Hi! Ask me anything about AI.</span>
+                    </p>
+                </div>
+            </div>
+            <div id="userInput">
+                <input id="textInput" type="text" name="msg" placeholder="Type your question here..." />
+            </div>
+          </div>
+            <div class="copyright">
+              <a  href="https://www.intentwise.com/" target="_blank">Built By Intentwise © 2024</a>
+              <br>
+              <a href="https://docs.google.com/document/d/1GbnvuhIphy9Wtzhebz5nOJEgW5CHNVzX2fJ2PahSkP8/edit?usp=sharing" target="_blank">White Paper by Sidhanth Kashyap & Shrimanyu Elaiyaraja</a>
+          </div>
+            <script>
+                function getBotResponse() {
+                    var rawText = $("#textInput").val();
+                    var userHtml = '<p class="userText" style="text-align:right;">' + rawText + "</p>";
+                    $("#textInput").val("");
+                    $("#chatbox").append(userHtml);
+                    document
+                        .getElementById("userInput")
+                        .scrollIntoView({ block: "start", behavior: "smooth" });
+                    $.get("/get", { msg: rawText }).done(function (data) {
+                        var botHtml = '<p class="botText" style="text-align:left;">' + data + "</p>";
+                        $("#chatbox").append(botHtml);
+                        document
+                            .getElementById("userInput")
+                            .scrollIntoView({ block: "start", behavior: "smooth" });
+                    });
+                }
+                $("#textInput").keypress(function (e) {
+                    if (e.which == 13) {
+                        getBotResponse();
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>
