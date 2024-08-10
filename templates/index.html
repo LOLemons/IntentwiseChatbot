@@ -4,7 +4,7 @@
     <title>Intentwise Chatbot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='test.css')}}">
 </head>
 <body>
 <div>
@@ -32,14 +32,14 @@
             <script>
                 function getBotResponse() {
                     var rawText = $("#textInput").val();
-                    var userHtml = '<p class="userText" style="text-align:right;">' + rawText + "</p>";
+                    var userHtml = '<p class="userText" style="text-align:right;"><span>' + rawText + "</span></p>";
                     $("#textInput").val("");
                     $("#chatbox").append(userHtml);
                     document
                         .getElementById("userInput")
                         .scrollIntoView({ block: "start", behavior: "smooth" });
                     $.get("/get", { msg: rawText }).done(function (data) {
-                        var botHtml = '<p class="botText" style="text-align:left;">' + data + "</p>";
+                        var botHtml = '<p class="botText" style="text-align:left;"><span>' + data + "</span></p>";
                         $("#chatbox").append(botHtml);
                         document
                             .getElementById("userInput")
