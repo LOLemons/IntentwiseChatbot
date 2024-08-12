@@ -8,6 +8,7 @@ with fitz.open("whitepaper.pdf", filetype='pdf') as doc:
     for page in doc:
         text += page.get_text()
 
+#prompt for the bot
 def make_prompt(question):
         prompt = f"""
 SYSTEM: Your purpose is to answer questions about AI, its various implications, factors that must be considered while implementing it, and the responsibilities of corporations and governments when developing and implementing AI.
@@ -23,9 +24,9 @@ User Question: {question}
 Response: """
         return prompt
 
-#api key fo openai
-openai.api_key = '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'
+openai.api_key = '<api key>' #change <api key> to your own key
 
+#parameters for gpt 3.5-turbo
 def get_completion(prompt):
     response = openai.completions.create(
         model="gpt-3.5-turbo-instruct",
@@ -37,6 +38,7 @@ def get_completion(prompt):
     )
     return response.choices[0].text.strip()
 
+#running bot as a webapp on flask
 app = Flask(__name__)
 @app.route("/")
 def home():    
